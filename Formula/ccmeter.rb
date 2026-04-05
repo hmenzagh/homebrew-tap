@@ -1,19 +1,19 @@
 class Ccmeter < Formula
   desc "A meter for Claude Code usage"
   homepage "https://github.com/hmenzagh/CCMeter"
-  version "1.0.0"
+  version "1.1.0"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/hmenzagh/CCMeter/releases/download/v1.0.0/ccmeter-aarch64-apple-darwin.tar.xz"
-    sha256 "5073e9bbf88a60edde042925a4ba1ef3f495b46adda4e97927ba6d4f71bc0a8b"
+    url "https://github.com/hmenzagh/CCMeter/releases/download/v1.1.0/ccmeter-aarch64-apple-darwin.tar.xz"
+    sha256 "710873b59728c6e321535a2be8b5dff913372ac242f91e6cb443c7e25fd140ff"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.0.0/ccmeter-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "de8ffc3fac6d6e3c131eef7827be756cd4416087b10a0fb4b96e4f9291b47b34"
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.1.0/ccmeter-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "3386f81daf1f13594570ae8714c55160504d781daac6a572b33b6d829103af25"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.0.0/ccmeter-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d52cb82be0e1a6b18aea2d8481547fd766349bc10c67de91e48d2df639a7e235"
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.1.0/ccmeter-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "4d9647066f93b04ab141bf2979ee8f3b27c9c26b6650a9707ccd2ae53abd80f0"
     end
   end
   license "MIT"
