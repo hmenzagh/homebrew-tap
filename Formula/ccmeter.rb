@@ -1,19 +1,25 @@
 class Ccmeter < Formula
   desc "A meter for Claude Code usage"
   homepage "https://github.com/hmenzagh/CCMeter"
-  version "1.2.0"
-  if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/hmenzagh/CCMeter/releases/download/v1.2.0/ccmeter-aarch64-apple-darwin.tar.xz"
-    sha256 "039904ce8b5207400b20a66bb6af1b5da962dc3514e2113cf38906d69d538894"
+  version "1.3.0"
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.3.0/ccmeter-aarch64-apple-darwin.tar.xz"
+      sha256 "dbdca6f84d571c05209604ba426670eb7f1edce9558c663149448ade697a9d4d"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.3.0/ccmeter-x86_64-apple-darwin.tar.xz"
+      sha256 "caed373c195b0cb72dfadbda7e774b232044f98a94c39207cff1a37f76b48247"
+    end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.2.0/ccmeter-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "eb079d2b4c09189af753c8df7a0a75f4b271ded968af7a9cd3af33166267b77b"
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.3.0/ccmeter-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "498426c6ccc1decbeaee72fdc8f0de1326b27deb5d88e4c650c9c9bf0c06ebdf"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.2.0/ccmeter-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "46d323ec47605853582cb576c46d010b4a98b675d3e5d21726b53dfdb6c1c885"
+      url "https://github.com/hmenzagh/CCMeter/releases/download/v1.3.0/ccmeter-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "4fd5efba40b56eff78e082b7b940e24f78f5a835cc417920ab50008b38d749ad"
     end
   end
   license "MIT"
@@ -21,6 +27,7 @@ class Ccmeter < Formula
   BINARY_ALIASES = {
     "aarch64-apple-darwin":              {},
     "aarch64-unknown-linux-gnu":         {},
+    "x86_64-apple-darwin":               {},
     "x86_64-unknown-linux-gnu":          {},
     "x86_64-unknown-linux-musl-dynamic": {},
     "x86_64-unknown-linux-musl-static":  {},
@@ -43,6 +50,7 @@ class Ccmeter < Formula
 
   def install
     bin.install "ccmeter" if OS.mac? && Hardware::CPU.arm?
+    bin.install "ccmeter" if OS.mac? && Hardware::CPU.intel?
     bin.install "ccmeter" if OS.linux? && Hardware::CPU.arm?
     bin.install "ccmeter" if OS.linux? && Hardware::CPU.intel?
 
